@@ -97,7 +97,8 @@ To generate the AI prompts, run:
 mvn promptsmith:generate-prompt
 ```
 
-From the example above a `default-prompt.md` file will be created with a complete initial prompt for your AI assistant providing the necessary context and metadata to kickstart reviews and code generation, making sure it's using the right **libraries** and **code style**.
+### Result
+From the example, for this project, creates [default-prompt.md](promptsmith/default-prompt.md). A complete initial prompt for your AI assistant providing the necessary context and metadata to kickstart reviews and code generation, making sure it's using the right **libraries** and **code style**.
 
 ### Configuration Parameters
 | Parameter | Description | Default |

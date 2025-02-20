@@ -26,5 +26,3 @@ replay_pid*
 target/
 
 .idea
-
-promptsmith/*.md
