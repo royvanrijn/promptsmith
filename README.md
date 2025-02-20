@@ -27,6 +27,7 @@ Promptsmith is a Maven plugin that generates an AI-friendly prompt containing es
 ## Project Information
 - **Project Directory:** ${projectDirectory}
 - **Maven Version:** ${mavenVersion}
+- **Java Version:** ${javaVersion}
 
 ## Dependencies
 <#if dependencies?has_content>
@@ -65,7 +66,7 @@ Please reply with: How can I assist you today?
 ````
 
 ## Usage
-Build the plugin and add it to your existing Maven project(s):
+Build the plugin and add it to an existing Maven project(s):
 ```xml
             <plugin>
                 <groupId>com.royvanrijn.promptsmith</groupId>
@@ -90,7 +91,7 @@ Build the plugin and add it to your existing Maven project(s):
             </plugin>
 ```
 
-To generate the AI prompt files, run:
+To generate the AI prompts, run:
 
 ```sh
 mvn promptsmith:generate-prompt

@@ -23,7 +23,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 
-@Mojo(name = "generate-prompt", defaultPhase = LifecyclePhase.GENERATE_RESOURCES)
+@Mojo(name = "generate-prompt", defaultPhase = LifecyclePhase.NONE)
 public class PromptsmithMojo extends AbstractMojo {
 
     @Parameter(defaultValue = "${project.basedir}", required = true, readonly = true)
@@ -88,6 +88,7 @@ public class PromptsmithMojo extends AbstractMojo {
         data.put("readmeContent", loadReadmeFile());
         data.put("projectDirectory", baseDir.getAbsolutePath());
         data.put("mavenVersion", session.getSystemProperties().getProperty("maven.version"));
+        data.put("javaVersion", System.getProperty("java.version"));
         data.put("dependencies", getCurrentProjectDependencies());
         data.put("referenceFiles", loadReferenceFiles());
         return data;
@@ -106,8 +107,7 @@ public class PromptsmithMojo extends AbstractMojo {
     private void addReferenceFile(Map<String, String> files, String filePath) throws IOException {
         Path file = baseDir.toPath().resolve(filePath);
         if (Files.exists(file)) {
-            String content = Files.readString(file); // No formatting the contents.
-            files.put(filePath, content);
+            files.put(filePath, Files.readString(file));
         } else {
             getLog().warn("Reference file not found: " + filePath);
         }
@@ -123,8 +123,7 @@ public class PromptsmithMojo extends AbstractMojo {
     private String loadReadmeFile() throws IOException {
         Path readmePath = baseDir.toPath().resolve(readmeFile);
         if (Files.exists(readmePath)) {
-            String content = Files.readString(readmePath);
-            return content;
+            return Files.readString(readmePath);
         } else {
             getLog().warn("README not found: " + readmeFile);
             return "_No README available._";

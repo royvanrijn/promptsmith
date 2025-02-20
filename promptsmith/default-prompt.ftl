@@ -10,6 +10,7 @@
 ## Project Information
 - **Project Directory:** ${projectDirectory}
 - **Maven Version:** ${mavenVersion}
+- **Java Version:** ${javaVersion}
 
 ## Dependencies
 <#if dependencies?has_content>
